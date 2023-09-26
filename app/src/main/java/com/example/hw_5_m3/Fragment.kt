@@ -23,6 +23,8 @@ class Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.button.setOnClickListener { view ->
             if (count < 10 && binding.button.text!="-1") {
                 count++
@@ -32,7 +34,13 @@ class Fragment : Fragment() {
                 count--
                 binding.text.text = count.toString()
             } else if (count == 0) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, FragmentAnother())
+                val fragmentAnother = FragmentAnother()
+                var bundle = Bundle()
+
+                bundle.putString("key", count.toString())
+                fragmentAnother.arguments = bundle
+
+                parentFragmentManager.beginTransaction().replace(R.id.container, fragmentAnother)
                     .commit()
             }
         }

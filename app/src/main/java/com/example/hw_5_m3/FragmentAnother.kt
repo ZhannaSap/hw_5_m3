@@ -24,8 +24,7 @@ class FragmentAnother : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        result = arguments?.getString("key")
+        super.onViewCreated(view, savedInstanceState
         binding.text.text = result.toString()
 
     }
